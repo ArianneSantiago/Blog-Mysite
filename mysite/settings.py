@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-i6-sqqz%$)7(rf+f#+f$sgy5cm2va5&=iwpzo^-%$7eun0##xx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-ariannesanti-blogmysite-30913us5irx.ws-eu108.gitpod.io''.herokuapp.com']
+ALLOWED_HOSTS = ['8000-ariannesanti-blogmysite-30913us5irx.ws-eu108.gitpod.io','.herokuapp.com']
 
 
 # Application definition
@@ -82,6 +82,11 @@ DATABASES = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeanyapp.com",
+    "https://*.herokuapp.com",
+    "https://8000-ariannesanti-blogmysite-30913us5irx.ws-eu108.gitpod.io"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
