@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
+
+    class NewManager(models.Manager):
+        def get_queryset(self):
+            return super().get_queryset() .filter(status='published')
+
     options = (
     ('draft', 'Draft'),
     ('published', 'Published'),
@@ -11,10 +16,12 @@ class Post(models.Model):
 
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date='publish')
-    publish = models.DateTimeField(default=timezone.now) 
+    publish = models.DateTimeField(auto_now_add=True) 
     author = models.ForeignKey (User, on_delete=models.CASCADE, related_name='blog_post')
     content = models.TextField()
     status = models.CharField(max_length=10, choices=options, default='draft')
+    objects = models.Manager()
+    newmanager = NewManager()
 
 
     class Meta:
